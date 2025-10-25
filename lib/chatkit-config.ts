@@ -2,12 +2,14 @@ import type { ChatKitOptions } from "@openai/chatkit"
 
 export const chatKitOptions: ChatKitOptions = {
   api: {
-    url: "/api/chat",
+    url: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/chat",
     headers: {
       "Content-Type": "application/json",
     },
     upload: {
-      url: "/api/upload",
+      url: process.env.NEXT_PUBLIC_API_URL
+        ? `${process.env.NEXT_PUBLIC_API_URL}/upload`
+        : "http://localhost:8000/api/upload",
       headers: {
         "Content-Type": "multipart/form-data",
       },
