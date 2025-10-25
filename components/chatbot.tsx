@@ -30,7 +30,7 @@ export function Chatbot() {
         
         // Load ChatKit script from CDN
         const script = document.createElement('script')
-        script.src = 'https://cdn.jsdelivr.net/npm/@openai/chatkit@latest/dist/index.js'
+        script.src = 'https://cdn.jsdelivr.net/npm/@openai/chatkit@1.0.0/dist/index.js'
         script.type = 'module'
         script.async = true
         
