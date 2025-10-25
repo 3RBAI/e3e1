@@ -9,13 +9,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fontsource/geist-mono": "^5.2.7",
+    "@fontsource/geist-sans": "^5.2.5",
     "@openai/chatkit": "latest",
     "@vercel/analytics": "latest",
     "@vercel/blob": "latest",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.454.0",
-    "next": "16.0.1-canary.0",
+    "next": "14.2.5",
     "next-themes": "latest",
     "openai": "latest",
     "react": "^19.0.0",
@@ -32,7 +34,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.0.1-canary.0",
+    "eslint-config-next": "14.2.5",
     "postcss": "^8.5",
     "tailwindcss": "^4.1.9",
     "typescript": "^5"
