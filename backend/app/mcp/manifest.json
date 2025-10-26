@@ -1,0 +1,106 @@
+{
+  "$schema": "https://github.com/anthropics/dxt/blob/main/dist/dxt-manifest.schema.json",
+  "dxt_version": "0.1",
+  "name": "chatkit-browser-use",
+  "display_name": "ChatKit Browser-Use AI Automation",
+  "version": "0.1.0",
+  "description": "AI-powered browser automation integrated with ChatKit that lets AI control web browsers to complete tasks autonomously",
+  "long_description": "ChatKit Browser-Use is a powerful extension that enables AI assistants to control real web browsers through an AI agent. It can navigate websites, fill forms, extract data, and perform complex multi-step tasks autonomously. Perfect for web scraping, testing, research, and automation workflows.\n\n### Key Features:\n- **Autonomous AI Agent**: High-level task execution with minimal supervision\n- **Direct Browser Control**: Navigate, click, type, and interact with any website\n- **Content Extraction**: Smart extraction of structured data from web pages\n- **Tab Management**: Handle multiple tabs and complex workflows\n- **Vision Capabilities**: Use screenshots for visual understanding\n- **Security Features**: Domain restrictions and sandboxed execution\n- **ChatKit Integration**: Seamless integration with OpenAI ChatKit\n\n### Use Cases:\n- Web scraping and data extraction\n- Automated testing and QA\n- Research and information gathering\n- Form filling and submissions\n- Multi-step workflow automation",
+  "homepage": "https://github.com/3RBAI/e3e1",
+  "documentation": "https://github.com/3RBAI/e3e1/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/3RBAI/e3e1"
+  },
+  "support": "https://github.com/3RBAI/e3e1/issues",
+  "author": {
+    "name": "3RBAI Team",
+    "email": "support@3rbai.com",
+    "url": "https://github.com/3RBAI"
+  },
+  "server": {
+    "type": "python",
+    "entry_point": "python",
+    "mcp_config": {
+      "command": "python",
+      "args": ["-m", "backend.app.mcp"],
+      "env": {
+        "OPENAI_API_KEY": "${user_config.openai_api_key}",
+        "BROWSER_USE_HEADLESS": "${user_config.headless}",
+        "BROWSER_USE_ALLOWED_DOMAINS": "${user_config.allowed_domains}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "retry_with_browser_use_agent",
+      "description": "Execute a high-level task using the AI browser agent. Best for complex multi-step workflows"
+    },
+    {
+      "name": "browser_navigate",
+      "description": "Navigate to a URL in the current tab or open a new tab"
+    },
+    {
+      "name": "browser_click",
+      "description": "Click on an element by its index from browser_get_state"
+    },
+    {
+      "name": "browser_type",
+      "description": "Type text into an input field identified by its index"
+    },
+    {
+      "name": "browser_get_state",
+      "description": "Get the current page state including all interactive elements with their indices"
+    },
+    {
+      "name": "browser_extract_content",
+      "description": "Extract structured content from the page using AI"
+    },
+    {
+      "name": "browser_scroll",
+      "description": "Scroll the page up or down"
+    },
+    {
+      "name": "browser_go_back",
+      "description": "Navigate back to the previous page"
+    },
+    {
+      "name": "browser_list_tabs",
+      "description": "List all open browser tabs"
+    },
+    {
+      "name": "browser_switch_tab",
+      "description": "Switch to a different tab by its index"
+    },
+    {
+      "name": "browser_close_tab",
+      "description": "Close a specific tab by its index"
+    }
+  ],
+  "keywords": ["browser", "automation", "chatkit", "openai", "ai-agent", "web-scraping", "mcp"],
+  "license": "MIT",
+  "user_config": {
+    "openai_api_key": {
+      "type": "string",
+      "title": "OpenAI API Key",
+      "description": "API key for OpenAI models",
+      "default": "",
+      "required": true,
+      "sensitive": true
+    },
+    "headless": {
+      "type": "boolean",
+      "title": "Headless Mode",
+      "description": "Run browser without GUI",
+      "default": false,
+      "required": false
+    },
+    "allowed_domains": {
+      "type": "string",
+      "title": "Allowed Domains",
+      "description": "Comma-separated list of domains the browser can access",
+      "default": "",
+      "required": false
+    }
+  }
+}
