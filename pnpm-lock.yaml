@@ -9,10 +9,10 @@ importers:
   .:
     dependencies:
       '@fontsource/geist-mono':
-        specifier: ^5.2.7
+        specifier: latest
         version: 5.2.7
       '@fontsource/geist-sans':
-        specifier: ^5.2.5
+        specifier: latest
         version: 5.2.5
       '@openai/chatkit':
         specifier: latest

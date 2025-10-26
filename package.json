@@ -9,8 +9,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@fontsource/geist-mono": "^5.2.7",
-    "@fontsource/geist-sans": "^5.2.5",
+    "@fontsource/geist-mono": "latest",
+    "@fontsource/geist-sans": "latest",
     "@openai/chatkit": "latest",
     "@vercel/analytics": "latest",
     "@vercel/blob": "latest",
