@@ -22,60 +22,22 @@ export function Chatbot() {
     console.log("[v0] Chatbot component mounted")
     console.log("[v0] ChatKit options:", chatKitOptions)
 
-    let mounted = true
-
-    const loadChatKit = async () => {
-      try {
-        console.log("[v0] Loading ChatKit from CDN...")
-        
-        // Load ChatKit script from CDN
-        const script = document.createElement('script')
-        script.src = 'https://cdn.jsdelivr.net/npm/@openai/chatkit@1.0.0/dist/index.js'
-        script.type = 'module'
-        script.async = true
-        
-        script.onload = () => {
-          if (!mounted) return
-          console.log("[v0] ChatKit script loaded successfully")
-          
-          // Wait a bit for the custom element to be registered
-          setTimeout(() => {
-            if (chatkitRef.current) {
-              console.log("[v0] Setting ChatKit options...")
-              chatkitRef.current.setOptions(chatKitOptions)
-              setIsLoading(false)
-              console.log("[v0] ChatKit initialized successfully")
-            }
-          }, 100)
-        }
-        
-        script.onerror = () => {
-          if (mounted) {
-            console.error("[v0] Failed to load ChatKit script")
-            setError("Failed to load chatbot library")
-            setIsLoading(false)
-          }
-        }
-        
-        document.head.appendChild(script)
-        
-        return () => {
-          document.head.removeChild(script)
-        }
-      } catch (err) {
-        console.error("[v0] Error loading ChatKit:", err)
-        if (mounted) {
-          setError("Failed to load chatbot library")
-          setIsLoading(false)
-        }
+    // Since @openai/chatkit is a dependency, it should be loaded automatically by Next.js.
+    // We only need to set the options once the custom element is available.
+    const initializeChatKit = () => {
+      if (chatkitRef.current) {
+        console.log("[v0] Setting ChatKit options...")
+        chatkitRef.current.setOptions(chatKitOptions)
+        setIsLoading(false)
+        console.log("[v0] ChatKit initialized successfully")
+      } else {
+        // Fallback or retry if element is not immediately available (shouldn't happen with Next.js)
+        const timeout = setTimeout(initializeChatKit, 100)
+        return () => clearTimeout(timeout)
       }
     }
 
-    loadChatKit()
-
-    return () => {
-      mounted = false
-    }
+    initializeChatKit()
   }, [])
 
   if (error) {
