@@ -1,17 +1,17 @@
 import type { ChatKitOptions } from "@openai/chatkit"
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || (typeof window !== "undefined" ? window.location.origin : "")
 
-console.log("[v0] API Base URL:", API_BASE_URL)
+
+
 
 export const chatKitOptions: ChatKitOptions = {
   api: {
-    url: `${API_BASE_URL}/api/chat`,
+    url: `/api/chat`,
     headers: {
       "Content-Type": "application/json",
     },
     upload: {
-      url: `${API_BASE_URL}/api/upload`,
+      url: `/api/upload`,
       headers: {
         "Content-Type": "multipart/form-data",
       },
